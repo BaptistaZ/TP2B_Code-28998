@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Tipo simples para a decisão: 0 = não comprar, 1 = comprar -->
+    <xs:simpleType name="decisionType">
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Elemento raiz: <houses> -->
+    <xs:element name="houses">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- Cada <house> representa uma linha do dataset -->
+                <xs:element name="house" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="type" type="xs:string"/>
+                            <xs:element name="furnishing" type="xs:string"/>
+
+                            <xs:element name="year_built" type="xs:integer"/>
+                            <xs:element name="size_sqft" type="xs:integer"/>
+                            <xs:element name="price" type="xs:integer"/>
+
+                            <xs:element name="owners_before" type="xs:integer"/>
+                            <xs:element name="rooms" type="xs:integer"/>
+                            <xs:element name="bathrooms" type="xs:integer"/>
+                            <xs:element name="garage" type="xs:integer"/>
+                            <xs:element name="garden" type="xs:integer"/>
+
+                            <xs:element name="crime_cases" type="xs:integer"/>
+                            <xs:element name="legal_cases" type="xs:integer"/>
+
+                            <xs:element name="salary" type="xs:integer"/>
+                            <xs:element name="loan_amount" type="xs:integer"/>
+                            <xs:element name="loan_years" type="xs:integer"/>
+                            <xs:element name="monthly_expenses" type="xs:integer"/>
+                            <xs:element name="down_payment" type="xs:integer"/>
+
+                            <xs:element name="emi_ratio" type="xs:decimal"/>
+
+                            <xs:element name="satisfaction" type="xs:integer"/>
+                            <xs:element name="neighbourhood" type="xs:integer"/>
+                            <xs:element name="connectivity" type="xs:integer"/>
+
+                            <xs:element name="decision" type="decisionType"/>
+                        </xs:sequence>
+
+                        <!-- Atributos principais do <house> -->
+                        <xs:attribute name="id" type="xs:integer" use="required"/>
+                        <xs:attribute name="country" type="xs:string" use="required"/>
+                        <xs:attribute name="city" type="xs:string" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
