@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 # Diretório base do projeto (pasta onde está o README.md)
@@ -11,19 +12,19 @@ DATA_CLEAN_CSV = BASE_DIR / "data" / "clean" / "houses_clean.csv"
 XML_OUTPUT = BASE_DIR / "xml" / "houses.xml"
 XSD_SCHEMA = BASE_DIR / "xml" / "schemas" / "houses.xsd"
 
-# =====================================================
-# CONFIGURAÇÕES DE REDE (SOCKETS / RPC / gRPC)
-# =====================================================
+# ==========================
+# NETWORK CONFIG (with env vars)
+# ==========================
 
-# Endereço e porto do servidor TCP
-SOCKET_HOST = "127.0.0.1"
-SOCKET_PORT = 5050
+# TCP sockets
+SOCKET_HOST = os.getenv("SOCKET_HOST", "127.0.0.1")
+SOCKET_PORT = int(os.getenv("SOCKET_PORT", "5050"))
 
-# Endereço e porto para o XML-RPC
-XMLRPC_HOST = "127.0.0.1"
-XMLRPC_PORT = 5001
+# XML-RPC
+XMLRPC_HOST = os.getenv("XMLRPC_HOST", "127.0.0.1")
+XMLRPC_PORT = int(os.getenv("XMLRPC_PORT", "5051"))
 
-# Endereço e porto para o gRPC
-GRPC_HOST = "127.0.0.1"
-GRPC_PORT = 5002
+# gRPC
+GRPC_HOST = os.getenv("GRPC_HOST", "127.0.0.1")
+GRPC_PORT = int(os.getenv("GRPC_PORT", "5052"))
 

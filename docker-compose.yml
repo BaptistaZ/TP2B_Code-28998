@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  socket-server:
+    build: .
+    container_name: tp2b_socket_server
+    environment:
+      # Dentro do container o servidor deve ouvir em todas as interfaces
+      - SOCKET_HOST=0.0.0.0
+      - SOCKET_PORT=5050
+    command: python -m servers.socket_server
+    ports:
+      # host:container
+      - "5050:5050"
