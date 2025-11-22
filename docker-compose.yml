@@ -12,3 +12,13 @@ services:
     ports:
       # host:container
       - "5050:5050"
+
+  xmlrpc-server:
+    build: .
+    container_name: tp2b_xmlrpc_server
+    environment:
+      - XMLRPC_HOST=0.0.0.0
+      - XMLRPC_PORT=5051
+    command: python -m servers.xmlrpc_server
+    ports:
+      - "5051:5051"

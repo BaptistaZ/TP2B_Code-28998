@@ -4,7 +4,7 @@ from pathlib import Path
 
 from core.config import SOCKET_HOST as HOST, SOCKET_PORT as PORT
 
-EVIDENCE_DIR = Path("docs") / "TPC_evidences"
+EVIDENCE_DIR = Path("docs") / "evidence" / "tcp"
 EVIDENCE_DIR.mkdir(parents=True, exist_ok=True)
 
 # Envia um comando para o servidor TCP e imprime a resposta JSON formatada.
