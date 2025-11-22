@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package houses;
+
+// Serviço gRPC que expõe operações sobre o dataset
+service HouseService {
+  rpc GetHousesByCountry (CountryRequest) returns (HousesResponse);
+  rpc GetHousesByPriceRange (PriceRangeRequest) returns (HousesResponse);
+  rpc GetAveragePriceByCountry (CountryRequest) returns (AveragePriceResponse);
+  rpc GetDecisionStats (Empty) returns (DecisionStatsResponse);
+}
+
+// ========== Mensagens de pedido ==========
+
+message CountryRequest {
+  string country = 1;
+  int32 limit = 2; // número máximo de casas a devolver (0 = sem limite explícito)
+}
+
+message PriceRangeRequest {
+  int32 min_price = 1;
+  int32 max_price = 2;
+  string country = 3; // opcional ("" = todos)
+  int32 limit = 4;
+}
+
+message Empty {}
+
+// ========== Mensagens de resposta ==========
+
+message House {
+  int32 id = 1;
+  string country = 2;
+  string city = 3;
+  string type = 4;
+  int32 price = 5;
+  int32 rooms = 6;
+  int32 bathrooms = 7;
+  int32 year_built = 8;
+  int32 decision = 9; // 0/1
+}
+
+message HousesResponse {
+  repeated House houses = 1;
+}
+
+message AveragePriceResponse {
+  string country = 1;
+  double average_price = 2;
+}
+
+message DecisionStatsResponse {
+  int32 total = 1;
+  int32 bought = 2;
+  int32 not_bought = 3;
+  double percent_bought = 4;
+}

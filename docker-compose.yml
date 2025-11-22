@@ -22,3 +22,16 @@ services:
     command: python -m servers.xmlrpc_server
     ports:
       - "5051:5051"
+
+  grpc-server:
+    build: .
+    container_name: tp2b_grpc_server
+    environment:
+      - GRPC_HOST=0.0.0.0
+      - GRPC_PORT=5052
+    command: python -m servers.grpc_server
+    ports:
+      - "5052:5052"
+
+
+      
