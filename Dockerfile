@@ -15,3 +15,4 @@ ENV PYTHONUNBUFFERED=1
 
 # Expose ports used by the services (TCP, XML-RPC, gRPC)
 EXPOSE 5050 5051 5052
+

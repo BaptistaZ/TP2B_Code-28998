@@ -26,10 +26,7 @@ def save_json(data, filename: str) -> None:
     print(f"[XQUERY] Resultado salvo em: {output_path}")
 
 
-# ==========================
 # 1) Média de preço por país
-# ==========================
-
 def avg_price_per_country(tree):
     houses = [house_element_to_dict(h) for h in tree.xpath("/houses/house")]
 
@@ -51,10 +48,7 @@ def avg_price_per_country(tree):
     return result
 
 
-# ========================================
 # 2) Número de casas por tipo em cada país
-# ========================================
-
 def count_by_type_per_country(tree):
     houses = [house_element_to_dict(h) for h in tree.xpath("/houses/house")]
 
@@ -76,10 +70,7 @@ def count_by_type_per_country(tree):
     return result
 
 
-# ===========================================
 # 3) Percentagem de casas compradas por país
-# ===========================================
-
 def decision_percentage_per_country(tree):
     houses = [house_element_to_dict(h) for h in tree.xpath("/houses/house")]
 

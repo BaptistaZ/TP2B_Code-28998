@@ -49,6 +49,7 @@ def load_dataset() -> pd.DataFrame:
 #  Funções de consulta (usadas pelos servidores)
 # =====================================================
 
+# Retorna uma lista de casas num país específico
 def get_houses_by_country(country: str, limit: int | None = 50) -> List[Dict[str, Any]]:
     df = load_dataset()
     mask = df["country"].str.lower() == country.lower()
@@ -58,6 +59,7 @@ def get_houses_by_country(country: str, limit: int | None = 50) -> List[Dict[str
     return result_df.to_dict(orient="records")
 
 
+# Retorna uma lista de casas num intervalo de preços, opcionalmente filtrado por país
 def get_houses_by_price_range(
     min_price: int, max_price: int, country: Optional[str] = None, limit: int | None = 50
 ) -> List[Dict[str, Any]]:
@@ -71,6 +73,7 @@ def get_houses_by_price_range(
     return result_df.to_dict(orient="records")
 
 
+# Retorna o preço médio das casas num país específico
 def get_average_price_by_country(country: str) -> float:
     df = load_dataset()
     mask = df["country"].str.lower() == country.lower()
@@ -78,6 +81,7 @@ def get_average_price_by_country(country: str) -> float:
     return float(subset["price"].mean()) if not subset.empty else 0.0
 
 
+# Retorna estatísticas globais sobre decisões de compra
 def get_decision_stats() -> Dict[str, Any]:
     df = load_dataset()
     total = len(df)

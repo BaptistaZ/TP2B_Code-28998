@@ -4,7 +4,6 @@ from xmlrpc.client import ServerProxy
 
 from core.config import XMLRPC_HOST, XMLRPC_PORT
 
-
 EVIDENCE_DIR = Path("docs") / "evidence" / "xmlrpc"
 EVIDENCE_DIR.mkdir(parents=True, exist_ok=True)
 
